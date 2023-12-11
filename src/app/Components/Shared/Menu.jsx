@@ -158,9 +158,9 @@ export default function Menu() {
             <Link
               className="py-2 px-4 rounded-md hover:bg-slate-500 text-slate-700 font-bold block"
               onClick={toggleMenuBox}
-              href={"/betting"}
+              href={"/categorise"}
             >
-              Betting
+              Categorise
             </Link>
 
             <Link
