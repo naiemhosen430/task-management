@@ -4,7 +4,7 @@ import React from "react";
 export default function page() {
   return (
     <>
-      <div className="lg:p-20 p-10">
+      <div className="lg:p-20 p-10 px-5">
         <h1 className="text-4xl px-2 font-bold py-4">My task</h1>
         <div>
           <SingleTask
