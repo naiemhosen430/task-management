@@ -43,6 +43,7 @@ export default function Page() {
       <div className="p-10 lg:px-40">
         {task.map((singletask) => (
           <SingleTask
+            key={singletask._id}
             taskid={singletask._id}
             tasktext={singletask.tittle}
             taskowner={singletask.ownername}
