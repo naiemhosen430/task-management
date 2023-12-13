@@ -1,5 +1,6 @@
 import PageHeader from "../Components/CommonComponents/PageHeader";
 import SingleTask from "../Components/CommonComponents/SingleTask";
+import CetagoriSection from "./Components/CetagoriSection";
 
 export default function page() {
   return (
@@ -9,6 +10,16 @@ export default function page() {
         description={
           "Here are a lots of cetagory that can help you to find your skill related task"
         }
+      />
+
+      {/* cetagory section  */}
+      <CetagoriSection
+        cetagory={[
+          "Web-developer",
+          "Graphic-design",
+          "digital-merketing",
+          "SEO",
+        ]}
       />
 
       <div className="p-10 lg:px-40">

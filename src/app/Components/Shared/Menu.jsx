@@ -100,7 +100,7 @@ export default function Menu() {
             <>
               <Link
                 className="py-2 hidden px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-700 text-white font-bold"
-                href={"/register"}
+                href={"/join"}
               >
                 Join
               </Link>
@@ -210,7 +210,7 @@ export default function Menu() {
                 <Link
                   onClick={toggleMenuBox}
                   className="py-2 px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
-                  href={"/register"}
+                  href={"/join"}
                 >
                   Join
                 </Link>
