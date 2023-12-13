@@ -5,7 +5,7 @@ import SingleTask from "../Components/CommonComponents/SingleTask";
 import CetagoriSection from "./Components/CetagoriSection";
 import axios from "axios";
 
-export default function page() {
+export default function Page() {
   const [task, setTask] = useState([]);
 
   useEffect(() => {
