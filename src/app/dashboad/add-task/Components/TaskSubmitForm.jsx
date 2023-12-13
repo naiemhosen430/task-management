@@ -1,13 +1,44 @@
 "use client";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 
 export default function TaskSubmitForm() {
   const { control, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  // get user info
+  const [userInfo, setUserInfo] = useState({
+    ownername: "",
+    email: "",
+  });
+  const session = useSession();
+  useEffect(() => {
+    if (session.data) {
+      setUserInfo({
+        ownername: session.data.user.name,
+        email: session.data.user.email,
+      });
+    }
+  }, [session]);
 
+  // submit
+  const onSubmit = async (formData) => {
+    const taskData = {
+      ...formData,
+      ownername: userInfo.ownername,
+      email: userInfo.email,
+    };
+
+    try {
+      const response = await axios.post(
+        `/api/task/${userInfo.email}`,
+        taskData
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <div className="lg:p-20 p-10">
@@ -15,18 +46,18 @@ export default function TaskSubmitForm() {
         <form onSubmit={handleSubmit(onSubmit)} className="lg:w-5/12 w-12/12">
           {/* Title */}
           <div className="p-2">
-            <label className="text-xl block font-bold" htmlFor="taskTitle">
+            <label className="text-xl block font-bold" htmlFor="tittle">
               Write task title
             </label>
             <Controller
-              name="taskTitle"
+              name="tittle"
               control={control}
               defaultValue=""
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
-                  id="taskTitle"
+                  id="tittle"
                   className="block w-full p-2 text-sm px-4 shadow-md border-2 border-yellow-600 rounded-lg"
                   placeholder="Task title"
                 />

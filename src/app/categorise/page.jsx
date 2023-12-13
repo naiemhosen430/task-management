@@ -1,8 +1,26 @@
+"use client";
+import { useEffect, useState } from "react";
 import PageHeader from "../Components/CommonComponents/PageHeader";
 import SingleTask from "../Components/CommonComponents/SingleTask";
 import CetagoriSection from "./Components/CetagoriSection";
+import axios from "axios";
 
 export default function page() {
+  const [task, setTask] = useState([]);
+
+  useEffect(() => {
+    const fatchdata = async () => {
+      try {
+        const response = await axios.get(`/api/task`);
+        setTask(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fatchdata();
+  }, []);
+
+  console.log({ task });
   return (
     <>
       <PageHeader
@@ -23,11 +41,14 @@ export default function page() {
       />
 
       <div className="p-10 lg:px-40">
-        <SingleTask
-          taskid={"123"}
-          tasktext={"Create a navigation manu by HTML, CSS"}
-          taskowner={"MD Naiem"}
-        />
+        {task.map((singletask) => (
+          <SingleTask
+            taskid={singletask._id}
+            tasktext={singletask.tittle}
+            taskowner={singletask.ownername}
+            taskcatagory={singletask.category}
+          />
+        ))}
       </div>
     </>
   );
