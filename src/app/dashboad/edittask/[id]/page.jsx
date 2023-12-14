@@ -173,7 +173,10 @@ export default function Page() {
             </div>
           </form>
           <div className="p-2">
-            <button className="p-2 px-4 bg-slate-700 text-xl text-white hover:bg-slate-600 rounded-lg">
+            <button
+              onClick={deleteTask}
+              className="p-2 px-4 bg-slate-700 text-xl text-white hover:bg-slate-600 rounded-lg"
+            >
               Delete task
             </button>
           </div>
