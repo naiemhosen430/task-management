@@ -4,7 +4,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 
-export default function page() {
+export default function Page() {
   const [task, setTask] = useState([]);
   const session = useSession();
   useEffect(() => {
