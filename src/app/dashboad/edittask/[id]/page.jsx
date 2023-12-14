@@ -12,13 +12,8 @@ export default function Page() {
   const [successBox, setSuccessBox] = useState(false);
   const [error, setError] = useState("");
   const [preTask, setPreTask] = useState("");
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, setValue } = useForm();
   const session = useSession();
-  const [fieldValue, setFieldValue] = useState({
-    tit: "",
-    cate: "",
-    des: "",
-  });
 
   useEffect(() => {
     const fatchDataOfSingleTask = async () => {
@@ -80,16 +75,11 @@ export default function Page() {
 
   // update field value when preTask is updated
   useEffect(() => {
-    setFieldValue({
-      tit: preTask.tittle,
-      cate: preTask.category,
-      des: preTask.description,
-    });
-  }, [preTask]);
-  console.log(fieldValue);
-  console.log(fieldValue.cate);
-  console.log(fieldValue.des);
-  console.log(fieldValue.tit);
+    setValue("tittle", preTask.tittle);
+    setValue("category", preTask.category);
+    setValue("description", preTask.description);
+  }, [preTask, setValue]);
+
   return (
     <>
       {mainBox && (
@@ -105,7 +95,6 @@ export default function Page() {
               <Controller
                 name="tittle"
                 control={control}
-                defaultValue={fieldValue.tit || "no values"}
                 render={({ field }) => (
                   <input
                     {...field}
@@ -125,7 +114,6 @@ export default function Page() {
               <Controller
                 name="category"
                 control={control}
-                defaultValue={fieldValue.cate || "no values"}
                 render={({ field }) => (
                   <select
                     {...field}
@@ -149,7 +137,6 @@ export default function Page() {
               <Controller
                 name="description"
                 control={control}
-                defaultValue={fieldValue.des || "no values"}
                 render={({ field }) => (
                   <textarea
                     {...field}
