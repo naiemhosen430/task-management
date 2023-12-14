@@ -17,16 +17,16 @@ export async function POST(NextRequest) {
 }
 
 export async function GET(NextResponse) {
-  dbconnect();
+  // dbconnect();
   const requestURL = NextResponse.url;
-  const splitUrl = requestURL.split("id/");
+  const splitUrl = requestURL.split("task/");
   const id = splitUrl[1];
   const data = await TaskModel.findOne({ _id: id });
 
   // response
   return Response.json(
     {
-      message: "Successfully added your task.",
+      message: "Successfull.",
       data,
     },
     { status: 200 }
