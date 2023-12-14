@@ -64,6 +64,7 @@ export default function Page() {
         `/api/task/${id}/?email=${userInfo.email}`,
         taskData
       );
+
       if (response.data) {
         setSuccessBox(true);
         setMainBox(false);

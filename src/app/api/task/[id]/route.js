@@ -52,14 +52,13 @@ export async function PUT(NextRequest, NextResponse) {
 
   // get info from request body
   const reqBody = await NextRequest.json();
-  const newUpdatedTask = TaskModel(reqBody);
 
   const id = splitUrl2[0];
 
   const data = await TaskModel.updateOne(
     { _id: id },
     {
-      $set: { newUpdatedTask },
+      $set: reqBody,
     }
   );
 
