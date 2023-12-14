@@ -1,14 +1,15 @@
 "use client";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"; // Add this import
 
 export default function Page() {
   const [task, setTask] = useState();
   const { id } = useParams();
   useEffect(() => {
-    const fatchDataOfSingleTask = async () => {
+    const fetchDataOfSingleTask = async () => {
       try {
-        const response = await axios.get(`/api/task//${id}`);
+        const response = await axios.get(`/api/task/${id}`);
         if (response.data) {
           setTask(response.data.data);
         }
@@ -16,14 +17,15 @@ export default function Page() {
         console.error(error);
       }
     };
-    fatchDataOfSingleTask();
-  }, []);
+    fetchDataOfSingleTask();
+  }, [id]);
+
   return (
     <>
       <div className="lg:w-10/12 w-12/12 m-auto p-5">
-        <h1 className="text-2xl py-2 font-bold">{task.tittle}</h1>
-        <h1 className="text-xl py-2 font-bold">{task.category}</h1>
-        <h1 className="text-lg py-2">{task.description}</h1>
+        <h1 className="text-2xl py-2 font-bold">{task?.tittle}</h1>
+        <h1 className="text-xl py-2 font-bold">{task?.category}</h1>
+        <h1 className="text-lg py-2">{task?.description}</h1>
       </div>
     </>
   );
