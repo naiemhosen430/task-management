@@ -3,7 +3,7 @@ import { dbconnect } from "@/utils/mongo";
 
 export async function GET() {
   dbconnect();
-  const data = await TaskModel.find();
+  const data = await TaskModel.find().limit(20);
   // response
   return Response.json(
     {
