@@ -76,7 +76,7 @@ export default function Page() {
     <>
       {mainBox && (
         <div className="lg:p-20 p-10">
-          <h1 className="text-4xl px-2 font-bold py-4">Add a new task</h1>
+          <h1 className="text-4xl px-2 font-bold py-4">Edit task</h1>
           <form onSubmit={handleSubmit(onSubmit)} className="lg:w-5/12 w-12/12">
             <h1 className="text-red-950">{error}</h1>
             {/* Title */}
@@ -151,6 +151,11 @@ export default function Page() {
               </button>
             </div>
           </form>
+          <div className="p-2">
+            <button className="p-2 px-4 bg-slate-900 text-xl text-white hover:bg-slate-600 rounded-lg">
+              Delete task
+            </button>
+          </div>
         </div>
       )}
 
