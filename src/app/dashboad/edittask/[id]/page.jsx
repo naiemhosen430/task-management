@@ -14,6 +14,11 @@ export default function Page() {
   const [preTask, setPreTask] = useState("");
   const { control, handleSubmit } = useForm();
   const session = useSession();
+  const [fieldValue, setFieldValue] = useState({
+    tit: "",
+    cate: "",
+    des: "",
+  });
 
   useEffect(() => {
     const fatchDataOfSingleTask = async () => {
@@ -72,7 +77,16 @@ export default function Page() {
       console.error(error);
     }
   };
-  console.log({ preTask });
+
+  // update field value when preTask is updated
+  useEffect(() => {
+    setFieldValue({
+      tit: preTask.tittle,
+      cate: preTask.category,
+      des: preTask.description,
+    });
+  }, [preTask]);
+
   return (
     <>
       {mainBox && (
@@ -88,7 +102,7 @@ export default function Page() {
               <Controller
                 name="tittle"
                 control={control}
-                defaultValue={preTask.tittle || "no values"}
+                defaultValue={fieldValue.tit || "no values"}
                 render={({ field }) => (
                   <input
                     {...field}
@@ -108,7 +122,7 @@ export default function Page() {
               <Controller
                 name="category"
                 control={control}
-                defaultValue={preTask.category || "no values"}
+                defaultValue={fieldValue.cate || "no values"}
                 render={({ field }) => (
                   <select
                     {...field}
@@ -132,7 +146,7 @@ export default function Page() {
               <Controller
                 name="description"
                 control={control}
-                defaultValue={preTask.description || "no values"}
+                defaultValue={fieldValue.des || "no values"}
                 render={({ field }) => (
                   <textarea
                     {...field}
