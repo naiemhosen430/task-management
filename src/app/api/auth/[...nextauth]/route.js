@@ -7,8 +7,6 @@ const hundler = NextAuth({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       redirectUri: "https://tmanaiem.vercel.app/auth/callback/google",
-      authorizationUrl: "https://accounts.google.com/o/oauth2/auth",
-      requestTokenUrl: "https://accounts.google.com/o/oauth2/token",
     }),
   ],
 });
