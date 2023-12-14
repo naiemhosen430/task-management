@@ -19,7 +19,7 @@ export default function Page() {
       try {
         const response = await axios.get(`/api/task//${id}`);
         if (response.data) {
-          setPreTask(response.data);
+          setPreTask(response.data.data);
         }
       } catch (error) {
         console.error(error);

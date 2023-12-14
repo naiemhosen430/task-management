@@ -27,13 +27,16 @@ export default function Page() {
         <h1 className="text-4xl px-2 font-bold py-4">My task</h1>
         <div>
           {task.map((singletask) => (
-            <SingleTask
-              key={singletask._id}
-              taskid={singletask._id}
-              tasktext={singletask.tittle}
-              taskowner={singletask.ownername}
-              taskcatagory={singletask.category}
-            />
+            <Link key={singletask._id} href={`/dashboad/edittask/${singletask._id}`}>
+              <div className="hover:bg-slate-300 rounded-lg hover:shadow-lg p-2 px-4">
+                <h1 className="hover:underline text-lg font-bold">
+                  {singletask.tittle}
+                </h1>
+                <h3 className="text-sm">
+                  {singletask.ownername} / {singletask.category}
+                </h3>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
