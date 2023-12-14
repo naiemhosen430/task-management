@@ -1,23 +1,6 @@
-"use client";
-import axios from "axios";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import SingleTask from "../Components/CommonComponents/SingleTask";
 
-export default function Page() {
-  const [task, setTask] = useState([]);
-
-  useEffect(() => {
-    const fatchdata = async () => {
-      try {
-        const response = await axios.get(`/api/task`);
-        setTask(response.data.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fatchdata();
-  }, []);
+export default function page() {
   return (
     <>
       <div className="h-screen overflow-y-scroll">
@@ -57,19 +40,6 @@ export default function Page() {
             </Link>
           </div>
         </div>
-      </div>
-
-      <div className="p-10 lg:px-40">
-        <h1 className="font-bold text-3xl p-5">Top tasks</h1>
-        {task.map((singletask) => (
-          <SingleTask
-            key={singletask._id}
-            taskid={singletask._id}
-            tasktext={singletask.tittle}
-            taskowner={singletask.ownername}
-            taskcatagory={singletask.category}
-          />
-        ))}
       </div>
     </>
   );
