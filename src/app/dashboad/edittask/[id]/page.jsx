@@ -72,6 +72,7 @@ export default function Page() {
       console.error(error);
     }
   };
+  console.log({ preTask });
   return (
     <>
       {mainBox && (
@@ -147,12 +148,12 @@ export default function Page() {
                 className="p-2 px-4 bg-slate-900 text-xl text-white hover:bg-slate-600 rounded-lg"
                 type="submit"
               >
-                Add task
+                Update task
               </button>
             </div>
           </form>
           <div className="p-2">
-            <button className="p-2 px-4 bg-slate-900 text-xl text-white hover:bg-slate-600 rounded-lg">
+            <button className="p-2 px-4 bg-slate-700 text-xl text-white hover:bg-slate-600 rounded-lg">
               Delete task
             </button>
           </div>
