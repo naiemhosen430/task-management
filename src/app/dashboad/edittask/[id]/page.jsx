@@ -87,7 +87,7 @@ export default function Page() {
               <Controller
                 name="tittle"
                 control={control}
-                defaultValue={preTask.tittle}
+                defaultValue={preTask.tittle || "no values"}
                 render={({ field }) => (
                   <input
                     {...field}
@@ -107,7 +107,7 @@ export default function Page() {
               <Controller
                 name="category"
                 control={control}
-                defaultValue={preTask.category}
+                defaultValue={preTask.category || "no values"}
                 render={({ field }) => (
                   <select
                     {...field}
@@ -131,7 +131,7 @@ export default function Page() {
               <Controller
                 name="description"
                 control={control}
-                defaultValue={preTask.description}
+                defaultValue={preTask.description || "no values"}
                 render={({ field }) => (
                   <textarea
                     {...field}
