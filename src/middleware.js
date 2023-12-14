@@ -5,7 +5,7 @@ export function middleware(request) {
   const path = request.nextUrl.pathname;
   const isPublicPath = path === "/join";
   const cookieStore = cookies();
-  const accessToken = cookieStore.get(process.env.NATNAME);
+  const accessToken = cookieStore.get("__Secure-next-auth.session-token");
 
   if (isPublicPath && accessToken) {
     return NextResponse.redirect(new URL("/dashboad", request.nextUrl));
