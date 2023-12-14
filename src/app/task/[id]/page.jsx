@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // Add this import
 
 export default function Page() {
   const [task, setTask] = useState();
