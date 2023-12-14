@@ -86,7 +86,10 @@ export default function Page() {
       des: preTask.description,
     });
   }, [preTask]);
-
+  console.log(fieldValue);
+  console.log(fieldValue.cate);
+  console.log(fieldValue.des);
+  console.log(fieldValue.tit);
   return (
     <>
       {mainBox && (
