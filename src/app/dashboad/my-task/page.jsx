@@ -2,6 +2,7 @@
 import SingleTask from "@/app/Components/CommonComponents/SingleTask";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 export default function Page() {
@@ -27,7 +28,10 @@ export default function Page() {
         <h1 className="text-4xl px-2 font-bold py-4">My task</h1>
         <div>
           {task.map((singletask) => (
-            <Link key={singletask._id} href={`/dashboad/edittask/${singletask._id}`}>
+            <Link
+              key={singletask._id}
+              href={`/dashboad/edittask/${singletask._id}`}
+            >
               <div className="hover:bg-slate-300 rounded-lg hover:shadow-lg p-2 px-4">
                 <h1 className="hover:underline text-lg font-bold">
                   {singletask.tittle}
