@@ -5,7 +5,7 @@ export async function POST(NextRequest) {
   dbconnect();
   const reqBody = await NextRequest.json();
   const newtask = TaskModel(reqBody);
-  await newtask.save();
+  await newtask.save({ new: true });
 
   // response
   return Response.json(
