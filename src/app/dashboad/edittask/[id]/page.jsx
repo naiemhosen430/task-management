@@ -13,6 +13,7 @@ export default function Page() {
   const [error, setError] = useState("");
   const [preTask, setPreTask] = useState("");
   const { control, handleSubmit } = useForm();
+  const session = useSession();
 
   useEffect(() => {
     const fatchDataOfSingleTask = async () => {
@@ -27,13 +28,13 @@ export default function Page() {
     };
     fatchDataOfSingleTask();
   }, []);
-  console.log({ preTask });
+
   // get user info
   const [userInfo, setUserInfo] = useState({
     ownername: "",
     email: "",
   });
-  const session = useSession();
+
   useEffect(() => {
     if (session.data) {
       setUserInfo({
@@ -43,7 +44,7 @@ export default function Page() {
     }
   }, [session]);
 
-  // submit
+  // edit task
   const onSubmit = async (formData) => {
     const taskData = {
       ...formData,
@@ -59,8 +60,8 @@ export default function Page() {
       setError("All field are required!");
     }
     try {
-      const response = await axios.post(
-        `/api/task/${userInfo.email}/${id}`,
+      const response = await axios.put(
+        `/api/task/${id}/?email=${userInfo.email}`,
         taskData
       );
       if (response.data) {
@@ -92,7 +93,6 @@ export default function Page() {
                     {...field}
                     type="text"
                     id="tittle"
-                    value={preTask.tittle}
                     className="block w-full p-2 text-sm px-4 shadow-md border-2 border-yellow-600 rounded-lg"
                     placeholder="Task title"
                   />
@@ -137,7 +137,6 @@ export default function Page() {
                     {...field}
                     className="block w-full max-h-40 p-2 text-sm px-4 shadow-md border-2 border-yellow-600 rounded-lg"
                     id="description"
-                    value={preTask.description}
                     placeholder="Start writing"
                   />
                 )}
@@ -158,7 +157,7 @@ export default function Page() {
       {successBox && (
         <div className="lg:p-20 p-10">
           <h1 className="text-xl px-2 font-bold py-4">
-            Task added successfully!
+            Task updated successfully!
           </h1>
           {/* Additional content or options related to success can go here */}
           <div className="p-2">
