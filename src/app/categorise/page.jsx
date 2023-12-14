@@ -20,7 +20,6 @@ export default function Page() {
     fatchdata();
   }, []);
 
-  console.log({ task });
   return (
     <>
       <PageHeader

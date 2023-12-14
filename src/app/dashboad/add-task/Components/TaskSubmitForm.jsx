@@ -48,6 +48,7 @@ export default function TaskSubmitForm() {
       );
       if (response.data) {
         setSuccessBox(true);
+        setMainBox(false);
       }
     } catch (error) {
       console.error(error);
