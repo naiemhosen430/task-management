@@ -15,3 +15,20 @@ export async function POST(NextRequest) {
     { status: 200 }
   );
 }
+
+export async function GET(NextResponse) {
+  dbconnect();
+  const requestURL = NextResponse.url;
+  const splitUrl = requestURL.split("id/");
+  const id = splitUrl[1];
+  const data = await TaskModel.findOne({ _id: id });
+
+  // response
+  return Response.json(
+    {
+      message: "Successfully added your task.",
+      data,
+    },
+    { status: 200 }
+  );
+}

@@ -23,7 +23,7 @@ export default function Home() {
       <Hero />
 
       <div className="p-10 lg:px-40">
-        <h1 className="p-5 text-3xl font-bold items-center"></h1>
+        <h1 className="p-5 text-3xl font-bold items-center">Top task</h1>
         {task.map((singletask) => (
           <SingleTask
             key={singletask._id}
