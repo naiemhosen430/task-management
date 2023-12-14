@@ -81,6 +81,21 @@ export default function Page() {
     setValue("description", preTask.description);
   }, [preTask, setValue]);
 
+  // delete task
+  const deleteTask = async () => {
+    try {
+      const response = await axios.delete(
+        `/api/task/${id}/?email=${userInfo.email}`
+      );
+
+      if (response.data) {
+        setSuccessBox(true);
+        setMainBox(false);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       {mainBox && (
@@ -167,9 +182,7 @@ export default function Page() {
 
       {successBox && (
         <div className="lg:p-20 p-10">
-          <h1 className="text-xl px-2 font-bold py-4">
-            Task updated successfully!
-          </h1>
+          <h1 className="text-xl px-2 font-bold py-4">Successfull!</h1>
           {/* Additional content or options related to success can go here */}
           <div className="p-2">
             <Link

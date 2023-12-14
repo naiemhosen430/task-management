@@ -71,3 +71,28 @@ export async function PUT(NextRequest, NextResponse) {
     { status: 200 }
   );
 }
+
+export async function DELETE(NextRequest, NextResponse) {
+  dbconnect();
+
+  // get info from url
+  const requestURL = NextRequest.url;
+
+  const splitUrl = requestURL.split("task/");
+  const splitUrl2 = splitUrl[1].split("?email");
+
+  // we can check user through the email/id here [splitUrl2[1]]
+
+  const id = splitUrl2[0];
+
+  const data = await TaskModel.deleteOne({ _id: id });
+
+  // response
+  return Response.json(
+    {
+      message: "Successfully deleted.",
+      data,
+    },
+    { status: 200 }
+  );
+}
