@@ -27,7 +27,7 @@ export default function Page() {
     };
     fatchDataOfSingleTask();
   }, []);
-
+  console.log({ preTask });
   // get user info
   const [userInfo, setUserInfo] = useState({
     ownername: "",
